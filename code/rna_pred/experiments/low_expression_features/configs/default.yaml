@@ -1,0 +1,61 @@
+project_root: ../../../../..
+data_dir: data/ml-4-g-project-1
+reference_fasta: data/reference/hg38.fa
+prepared_dir: data/prepared/default
+cache_dir: data/cache/alphagenome-default
+run_dir: outputs/experiments/low_expression_features
+regions:
+  max_candidates: 60
+  radius: 100000
+  promoter_bp: 2048
+  candidate_bp: 512
+  window_bp: 262144
+tracks: [DNase, H3K27ac, H3K4me3, H3K9me3, H3K27me3]
+extraction:
+  checkpoint_path: data/checkpoints/model_all_folds.safetensors
+  checkpoint_repo: gtca/alphagenome_pytorch
+  checkpoint_file: model_all_folds.safetensors
+  checkpoint_revision: b01c0ffa73e07c053491f3b5ea8bcf67d93b9920
+  port_revision: 72268c011d37cf2d387506493614952d85abe21b
+  batch_size: 1
+  shard_windows: 32
+  mixed_precision: true
+model:
+  embedding_dim: 3072
+  width: 64
+  heads: 4
+  layers: 3
+  feedforward: 256
+train:
+  seed: 42
+  batch_size: 256
+  epochs: 50
+  patience: 8
+  learning_rate: 0.0001
+  weight_decay: 0.000001
+  num_workers: 0
+  device: cuda
+  cpu_threads: 4
+  selection_metric: val_mean_spearman
+  objective:
+    name: smooth_l1
+chromatin:
+  tracks: [DNase, H3K27ac, H3K4me3, H3K9me3, H3K27me3, H3K4me1, H3K36me3]
+  segments: [[-100000, -10240, 6], [-10240, -2048, 4], [-2048, 2048, 32], [2048, 10240, 4], [10240, 100000, 6]]
+  promoter_widths: [250, 500, 2048]
+  body_bins: 10
+comparison:
+  seeds: [42, 43, 44]
+  designs: [a_to_b, x1_to_x2, x2_to_x1]
+  variants: [baseline, boosted_trees, chromatin_only, dual_branch]
+  neural:
+    width: 128
+    dropout: 0.1
+  trees:
+    learning_rate: 0.05
+    max_leaf_nodes: 15
+    min_samples_leaf: 30
+    l2_regularization: 1.0
+    max_iter: 500
+    eval_every: 25
+    patience: 8

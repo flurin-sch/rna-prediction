@@ -1,0 +1,13 @@
+design,variant,cell,combined_spearman,low_positive_spearman,low_positive_mae_log1p,zero_positive_auroc,n_low_positive,source
+a_to_b,baseline,X1,0.805445732644154,0.12386470638724344,0.8236907212677632,0.9351418597742127,222,outputs/experiments/low_expression_losses/baseline
+a_to_b,baseline,X2,0.805445732644154,0.20948224041088767,0.5733845575159491,0.9117571870375605,259,outputs/experiments/low_expression_losses/baseline
+x1_to_x2,baseline,X2,0.7583913992951761,0.23652981515235613,0.5701798780702265,0.887004860361898,3021,outputs/experiments/low_expression_losses/baseline
+x2_to_x1,baseline,X1,0.7577159402041117,,0.7459734835134987,0.9115865927953273,889,outputs/experiments/low_expression_losses/baseline
+a_to_b,weighted,X1,0.7981213039987312,0.14455377967901578,0.7024230688944737,0.9292908661781211,222,outputs/experiments/low_expression_losses/weighted
+a_to_b,weighted,X2,0.7981213039987312,0.14615965851221788,0.5063672463352621,0.9059117436775684,259,outputs/experiments/low_expression_losses/weighted
+x1_to_x2,weighted,X2,0.7499162757551031,0.22499575414502992,0.48450969405888505,0.8826388483670998,3021,outputs/experiments/low_expression_losses/weighted
+x2_to_x1,weighted,X1,0.7518366728119491,,0.5913690588387503,0.907291912331934,889,outputs/experiments/low_expression_losses/weighted
+a_to_b,ranking,X1,0.8076301566485106,0.11400341774337133,0.8028723010745674,0.9330828711956163,222,outputs/experiments/low_expression_losses/ranking
+a_to_b,ranking,X2,0.8076301566485106,0.18408478126148767,0.5758757003572714,0.9106743511298073,259,outputs/experiments/low_expression_losses/ranking
+x1_to_x2,ranking,X2,0.7591711799695376,0.2332095196502654,0.5561769698833278,0.8871460094447163,3021,outputs/experiments/low_expression_losses/ranking
+x2_to_x1,ranking,X1,0.755195319978808,,0.7617548156050521,0.908578148062085,889,outputs/experiments/low_expression_losses/ranking

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rna-pred"
+version = "0.1.0"
+description = "Cached AlphaGenome features with EPInformer-inspired CAGE prediction"
+requires-python = ">=3.12"
+dependencies = [
+  "torch>=2.8,<2.9", "numpy>=2.2,<2.3", "pandas>=2.2,<2.3",
+  "pyarrow>=19,<20", "scipy>=1.15,<1.16", "PyYAML>=6,<7",
+  "matplotlib>=3.10,<3.11",
+  "pyBigWig>=0.3.24,<0.4", "pyfaidx>=0.8,<0.9",
+  "scikit-learn==1.7.2",
+]
+
+[project.optional-dependencies]
+extraction = [
+  "huggingface_hub>=0.24,<2", "safetensors>=0.4,<1",
+  "alphagenome-pytorch @ git+https://github.com/genomicsxai/alphagenome-pytorch.git@72268c011d37cf2d387506493614952d85abe21b",
+]
+test = ["pytest>=8,<9"]
+
+[project.scripts]
+rna-pred = "rna_pred.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["code"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+
+[tool.setuptools.package-data]
+rna_pred = ["**/*.yaml", "**/*.md", "**/*.csv", "**/*.sh"]

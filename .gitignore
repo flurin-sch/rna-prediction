@@ -1,2 +1,10 @@
 resources/*
-figures/*
+/data/
+/.conda
+/outputs/**
+!/outputs/**/
+!/outputs/**/summary.pdf
+/logs/
+__pycache__/
+*.egg-info/
+.pytest_cache/

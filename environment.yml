@@ -1,0 +1,23 @@
+name: rna-pred
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - numpy=2.2
+  - pandas=2.2
+  - pyarrow=19
+  - scipy=1.15
+  - pyyaml=6
+  - pytest=8
+  - matplotlib=3.10
+  - pip:
+      - torch==2.8.0
+      - pyBigWig==0.3.24
+      - scikit-learn==1.7.2
+      - pyfaidx>=0.8,<0.9
+      - huggingface_hub>=0.24,<2
+      - safetensors>=0.4,<1
+      - alphagenome-pytorch @ git+https://github.com/genomicsxai/alphagenome-pytorch.git@72268c011d37cf2d387506493614952d85abe21b
+      - -e .
+
